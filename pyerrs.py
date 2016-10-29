@@ -1,40 +1,64 @@
 from __future__ import print_function
 
-def print_err(func):
+def print_error(func):
     try:
         func()
     except Exception as e:
         print(e)
 
 
-@print_err
-def bad_args():
-    def two_args(a, b):
-        pass
-    two_args(42)
+def syntax_error(code):
+    try:
+        exec(code)
+    except Exception as e:
+        print(e.msg)
 
 
-@print_err
-def no_self_in_param():
-    class Foo(object):
-        def no_self():
-            pass
-
-    foo = Foo()
-    foo.no_self()
+syntax_error("""
+print hello
+""")
 
 
-@print_err
-def print_bad_str():
-
+@print_error
+def bad_str():
     class BadStr():
         def __str__(self):
             return 42
 
-    print(BadStr())
+    str(BadStr())
 
+@print_error
+def bad_args_1():
+    def foo(x, a=2, b=3):
+        pass
+    foo(42, 43, 44, 45)
 
-@print_err
+@print_error
+def bad_args_2():
+    def foo(x, a=2, b=3):
+        pass
+    foo()
+
+@print_error
+def bad_args_3():
+    def foo():
+        pass
+    foo(42)
+
+@print_error
+def bad_args_4():
+    def foo(a, b):
+        pass
+    foo(42)
+
+@print_error
+def bad_args_5():
+    def foo(a, b=None):
+        pass
+
+    foo(42, c=None)
+
+@print_error
 def bad_init():
     class BadInit():
         def __init__(self):
@@ -42,15 +66,11 @@ def bad_init():
 
     BadInit()
 
-
-@print_err
+@print_error
 def wrong_exception_type():
     raise 42
 
 
-@print_err
-def bad_kwarg():
-    def foo(a, b=None):
-        pass
-
-    foo(42, c=None)
+@print_error
+def bad_unpack():
+    a, b = (1, 2, 3)
