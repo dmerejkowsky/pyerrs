@@ -9,3 +9,9 @@ Let's find out!
 
 Just run `python3 compare.py`. It will display a block of two lines every time
 the error messages between 2 and 3 are different.
+
+## Results
+
+Results are available on [dmerej.info/pyerrs](https://dmerej.info/pyerrs)
+
+Patches welcome!
