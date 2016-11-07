@@ -1,0 +1,4 @@
+TypeError: join() argument must be str or bytes, not 'tuple'
+
+if ["copy"] in src_repo:
+    TypeError: 'in <string>' requires string as left operand, not list
