@@ -4,3 +4,5 @@ if ["copy"] in src_repo:
     TypeError: 'in <string>' requires string as left operand, not list
 
 subprocess.check_call(["ls", 42])
+
+os.environ["foo"] = 42
