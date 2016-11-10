@@ -6,3 +6,11 @@ if ["copy"] in src_repo:
 subprocess.check_call(["ls", 42])
 
 os.environ["foo"] = 42
+
+
+subprocess.check_call(cmd, env=env, cwdpath)
+SyntaxError: non-keyword arg after keyword arg
+
+cmd = ["git", *command]
+SyntaxError: can use starred expression only as assignment target
+(fixed in 3.5)
