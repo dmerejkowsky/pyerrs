@@ -14,3 +14,8 @@ SyntaxError: non-keyword arg after keyword arg
 cmd = ["git", *command]
 SyntaxError: can use starred expression only as assignment target
 (fixed in 3.5)
+
+a=[1,2,3]
+a["foo"]
+
+import foo.bar when foo is not a package
